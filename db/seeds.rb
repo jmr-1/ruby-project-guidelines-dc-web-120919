@@ -8,6 +8,8 @@ require 'pp'
 
 #clean database first 
 Game.destroy_all 
+User.destroy_all
+Collection.destroy_all 
 
 def get_games_api
 
@@ -49,7 +51,7 @@ def get_game_info(game_hash)
     game_hash["games"].each do |game|
 
         #creates a new game object
-        puts "*#{game}*"
+        # puts "*#{game}*"
         new_game = Game.create
 
         game_info_array.each do |info|
@@ -88,3 +90,29 @@ User.create(first_name: "Mansour", last_name: "Cheyo")
 User.create(first_name: "Anna", last_name: "Dybas")
 User.create(first_name: "Marija", last_name: "Stojanovic")
 User.create(first_name: "Amia", last_name: "Defreitas")
+
+#collection seed here 
+
+def collection_maker(user)
+
+    #randomly add 100 games to each user's collection 
+    100.times do
+        
+        #Collection.create(user_id: , game_id: )
+        #Collection.create(user, Game.all[rand(Game.all.length)])
+        game = Game.all[rand(Game.all.length)]
+
+        Collection.create(user_id: user.id, game_id: game.id)
+    end 
+
+end 
+
+def create_user_collection 
+
+    User.all.each do |user|
+        puts "creating collection for #{user.first_name} #{user.last_name}"
+        collection_maker(user)
+    end 
+end 
+
+create_user_collection  
