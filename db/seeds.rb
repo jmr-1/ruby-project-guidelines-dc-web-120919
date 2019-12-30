@@ -79,3 +79,12 @@ get_game_info(search_by_title('Rails'))
 get_game_info(search_by_title('Civilization'))
 
 #User seed starts 
+
+User.create(first_name: "John-Louis", last_name: "Rumingan")
+User.create(first_name: "Samantha", last_name: "Smith")
+User.create(first_name: "Sean", last_name: "Beach")
+User.create(first_name: "Skyler", last_name: "Torian")
+User.create(first_name: "Mansour", last_name: "Cheyo")
+User.create(first_name: "Anna", last_name: "Dybas")
+User.create(first_name: "Marija", last_name: "Stojanovic")
+User.create(first_name: "Amia", last_name: "Defreitas")
