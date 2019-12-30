@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191230173657) do
+ActiveRecord::Schema.define(version: 20191230204908) do
 
   create_table "games", force: :cascade do |t|
     t.string  "name"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20191230173657) do
     t.integer "max_playtime"
     t.float   "price"
     t.integer "reddit_mentions"
+    t.integer "reddit_all_time_count"
+    t.integer "average_user_rating"
+    t.integer "year_published"
   end
 
   create_table "users", force: :cascade do |t|
