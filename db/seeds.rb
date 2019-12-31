@@ -65,19 +65,21 @@ end
 
 #seed starts below:
 
-get_game_info(search_by_title('Catan'))
+# get_game_info(search_by_title('Catan'))
 get_game_info(search_by_title('Neuland'))
+get_game_info(search_by_title('Keyflower'))
+get_game_info(search_by_title('Agricola'))
 get_game_info(search_by_title('Dominion'))
-get_game_info(search_by_title('Battle'))
-get_game_info(search_by_title('Railroad'))
-get_game_info(search_by_title('Bus'))
-get_game_info(search_by_title('Campaign'))
-get_game_info(search_by_title('Combat'))
-get_game_info(search_by_title('18'))
+# get_game_info(search_by_title('Battle'))
+# get_game_info(search_by_title('Railroad'))
+# get_game_info(search_by_title('Bus'))
+# get_game_info(search_by_title('Campaign'))
+# get_game_info(search_by_title('Combat'))
+get_game_info(search_by_title('Azul'))
 get_game_info(search_by_title('1830'))
 get_game_info(search_by_title('1817'))
-get_game_info(search_by_title('Magic'))
-get_game_info(search_by_title('Rails'))
+# get_game_info(search_by_title('Magic'))
+# get_game_info(search_by_title('Rails'))
 get_game_info(search_by_title('Civilization'))
 
 #User seed starts 

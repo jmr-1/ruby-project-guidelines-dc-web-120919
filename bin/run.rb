@@ -12,5 +12,13 @@ end
 
 def help 
 
+    #shows list of commands
+end 
+
+
+def command 
+
+    puts "Please enter a command:"
+
     
 end 
