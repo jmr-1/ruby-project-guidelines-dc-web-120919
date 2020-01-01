@@ -1,60 +1,21 @@
 require_relative '../config/environment'
 
 
-def greeting 
-
-    puts " BOARD GAMES \n
-    BOARD GAMES \n
-        BOARD GAMES \n
-            BOARD GAMES \n
-                BOARD GAMES \n"
-end 
-
-def get_input
-
-    return gets.strip.downcase
-end 
-
-def invalid_command 
-
-    puts "Invalid input. Please try again. \n"
-end 
-
-def exit_program
-
-    puts "Exiting program. Goodbye!"
-end 
-
-def user_login 
-
-    puts "User login:"
-    #user enters login info
-    #if login info does not match any users, asks again
-    #once login info returns something, returns that user 
-
-    loop do 
-
-        input = get_input 
-        #splits the name into first and last 
-        split = input.gsub(/\s+/m, ' ').gsub(/^\s+|\s+$/m, '').split(" ")
-        puts split.first 
-        puts split.last 
-        user = User.where('lower(first_name) = ?', split.first) && User.where('lower(last_name) = ?', split.last)
-        #puts "User: #{user}. Name: #{user.first_name} #{user.last_name}"
-        puts "User: #{user}"
-        break 
-    end 
-    
-    # return user 
-end 
-
-def help 
+def help(login=nil)
 
     #shows list of commands
     puts "exit : Exits the program"
     puts "help : Gets this list of options"
     puts "login : Logs in or change user to compare games"
+    puts "logout : Logs out of user"
     puts "most_owned : Finds the most owned games "
+
+    if login!= nil 
+
+        #puts following commands as well
+
+    end 
+    
 end 
 
 def run 
@@ -67,6 +28,7 @@ def run
 
         input = get_input 
         #put user_login here?
+        login = nil 
 
         case input 
             when 'exit'
@@ -76,6 +38,12 @@ def run
                 help 
             when 'login'
                 user_login 
+                #login = 1  formerly here but that presents a problem of being logged in even if user typed exit out of login loop
+                #need to make helper method to see if there's a user object present
+                #then set login = helper_method which returns either nil or 1
+            when 'logout'
+                user_logout
+                login = nil 
             when 'most_owned'
                 Collection.most_owned_game_printer
             else 
