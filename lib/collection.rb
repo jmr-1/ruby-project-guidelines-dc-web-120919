@@ -3,7 +3,7 @@ class Collection < ActiveRecord::Base
     belongs_to :user
     belongs_to :game
 
-    def self.owned_games  
+    def self.owned_games  #sorts all owned games by frequency and returns it 
 
         frequency = Hash.new(0)
         Collection.all.each do |collection|
@@ -19,7 +19,7 @@ class Collection < ActiveRecord::Base
         return frequency.sort_by {|title, num| num}.reverse 
     end 
 
-    def self.most_owned_game
+    def self.most_owned_game #finds the most owned gamed from owned games hash 
 
         max_quantity = 0 
         hash_max = Hash.new(0)
@@ -35,13 +35,24 @@ class Collection < ActiveRecord::Base
         return hash_max 
     end 
 
-    def self.most_owned_game_printer 
+    def self.most_owned_game_printer #prints most owned game results to console
 
         most_games = self.most_owned_game
-        puts "The most owned games are: "
-        most_games.each do |game,num|
-            puts "#{game} with #{num} copies owned by everyone."
-        end 
+
+        if most_games.count == 1 
+            puts "The most owned game is: "
+            most_games.each do |game,num|
+                puts "#{game} with #{num} copies owned by everyone."
+            end 
+        else 
+            puts "The most owned games are: "
+            game_num = 0 
+            most_games.each do |game,num|
+                puts "#{game} \n"
+                game_num = num 
+            end 
+            puts "with a total of #{game_num} owned for each game."
+        end     
     end 
 
     def self.top_50_games_chart 
