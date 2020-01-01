@@ -19,7 +19,7 @@ class Collection < ActiveRecord::Base
         return frequency.sort_by {|title, num| num}.reverse 
     end 
 
-    def self.most_owned_game #finds the most owned gamed from owned games hash 
+    def self.most_owned_game #finds the most owned gamed from owned games array 
 
         max_quantity = 0 
         hash_max = Hash.new(0)
@@ -55,9 +55,17 @@ class Collection < ActiveRecord::Base
         end     
     end 
 
-    def self.top_50_games_chart 
+    def self.top_x_games_chart 
 
+        puts "Enter the number of games you want to see:"
+        input = get_input.to_i 
+        chart = self.owned_games 
+        puts "Most popular #{input} games owned by all users:"
+        
+        chart[0..input].each do |game|
 
+            puts "#{game[0]}| #{game[1]}"
+        end 
     end 
 
 end 
