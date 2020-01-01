@@ -38,4 +38,22 @@ class Game < ActiveRecord::Base
         puts "Note: These games are priced above $0. Games with $0 price are out of stock or have no included value."
     end 
 
+    def self.game_owners(game) 
+        #finds the number of owners of this game 
+        Collection.all.select do |collection|
+            collection.game == game[0]
+        end.uniq 
+    end 
+
+    def self.print_game_owners(game) 
+        #prints game_owners 
+        game_owners = self.game_owners(game)
+        game_owners = game_owners
+        puts "The number of owners of this game are #{game_owners.count} and the owners are:"
+        game_owners.each do |game|
+            puts "#{game.user.first_name} #{game.user.last_name}" 
+        end 
+
+    end 
+
 end 

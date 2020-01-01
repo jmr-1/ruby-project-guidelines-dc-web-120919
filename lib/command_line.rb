@@ -87,3 +87,20 @@ def user_logout(user = nil) # purges logged user object
 
     return user = nil 
 end 
+
+def find_game 
+    #finds a game from list of all games 
+    puts "Please enter the game name: "
+    input = get_input 
+    return Game.where('lower(name) = ?', input)
+end 
+
+
+def owners_of_game(game)
+    #handles the process of find_game 
+    if game.count == 0 
+        puts "Game not found"
+    else 
+        Game.print_game_owners(game) 
+    end 
+end 

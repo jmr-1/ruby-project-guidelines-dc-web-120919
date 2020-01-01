@@ -11,6 +11,7 @@ def help(user)
     puts "top_games : Displays the top x games"
     puts "expensive : Finds games above x price"
     puts "budget : Finds games below x price"
+    puts "owners_of_game : Finds and displays the owners of a certain game"
     puts "user : Shows currently logged in user"
     puts "login : Logs in or change user to compare games"
     puts "logout : Logs out of user"
@@ -54,6 +55,9 @@ def run
                 Game.print_expensive_games 
             when 'budget'
                 Game.print_budget_games 
+            when 'owners_of_game'
+                game = find_game 
+                owners_of_game(game)
             when 'duplicate' 
                 if user != nil 
                     user.print_duplicate_games    
