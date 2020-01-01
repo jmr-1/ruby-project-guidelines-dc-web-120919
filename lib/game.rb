@@ -5,6 +5,7 @@ class Game < ActiveRecord::Base
 
 
     def self.find_expensive_games
+        #find games above a certain price
         input = 0 
         loop do 
             puts "Please enter an amount: "
@@ -15,9 +16,26 @@ class Game < ActiveRecord::Base
     end 
 
     def self.print_expensive_games 
-
+        #prints find_expensive_games array 
         expensive_games = self.find_expensive_games 
         puts "These are the games worth more than what you asked:"
         expensive_games.each {|game| puts game.name}
     end 
+
+    def self.find_budget_games
+        #find games below certain price
+        #note: does not include games priced at 0.0 because those are usually out of stock/nil
+        puts "Please enter an amount: "
+        input = get_input.to_i 
+        return self.all.select{|game| game.price < input && game.price > 0}
+    end 
+
+    def self.print_budget_games
+        #prints find_budget_games array 
+        budget_games = self.find_budget_games 
+        puts "These are the games worth less than what you asked:"
+        budget_games.each {|game| puts game.name}
+        puts "Note: These games are priced above $0. Games with $0 price are out of stock or have no included value."
+    end 
+
 end 
