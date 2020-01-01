@@ -16,6 +16,8 @@ def help(user)
         #puts following commands as well
         puts "****"
         puts "additional logged in features below:"
+        puts "duplicate : Finds and displays duplicate games"
+        puts "collection_worth : Finds the total value of this user's collection"
     end 
     
 end 
@@ -47,6 +49,19 @@ def run
                 Collection.most_owned_game_printer
             when 'top_games'
                 Collection.top_x_games_chart 
+            
+            when 'duplicate' 
+                if user != nil 
+                    user.print_duplicate_games    
+                else 
+                    invalid_command 
+                end     
+            when 'collection_worth'
+                if user != nil
+                    user.print_collection_worth
+                else
+                    invalid_command
+                end  
             else 
                 invalid_command 
                 help(user)
