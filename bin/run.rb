@@ -25,11 +25,6 @@ def exit_program
     puts "Exiting program. Goodbye!"
 end 
 
-def find_username 
-
-
-end 
-
 def user_login 
 
     puts "User login:"
@@ -56,9 +51,10 @@ end
 def help 
 
     #shows list of commands
-    puts "'exit': Exits the program"
-    puts "'help': Gets this list of options"
-    puts "'login': Logs in or change user to compare games"
+    puts "exit : Exits the program"
+    puts "help : Gets this list of options"
+    puts "login : Logs in or change user to compare games"
+    puts "most_owned : Finds the most owned games "
 end 
 
 def run 
@@ -80,6 +76,8 @@ def run
                 help 
             when 'login'
                 user_login 
+            when 'most_owned'
+                Collection.most_owned_game_printer
             else 
                 invalid_command 
                 help 
