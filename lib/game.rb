@@ -39,19 +39,25 @@ class Game < ActiveRecord::Base
     end 
 
     def self.game_owners(game) 
-        #finds the number of owners of this game 
-        Collection.all.select do |collection|
-            collection.game == game[0]
-        end.uniq 
+        #returns the array of owners of this game 
+        owners = Collection.all.select {|collection| collection.game == game[0]}
+    end 
+
+    def self.game_owners_unique(game)
+        #returns unique array of owners 
+        owners = self.game_owners(game)
+        return owners.map {|owner| owner.user}.uniq 
     end 
 
     def self.print_game_owners(game) 
         #prints game_owners 
         game_owners = self.game_owners(game)
-        game_owners = game_owners
-        puts "The number of owners of this game are #{game_owners.count} and the owners are:"
-        game_owners.each do |game|
-            puts "#{game.user.first_name} #{game.user.last_name}" 
+        game_owners_unique = self.game_owners_unique(game)
+        puts "The number of owners of this game are #{game_owners_unique.count} and the owners are:"
+        game_owners_unique.each do |owner| 
+            #finds number of copies owned by each owner
+            num_copies = game_owners.select{|collection| collection.user == owner}
+            puts "#{owner.first_name} #{owner.last_name} with #{num_copies.count} copies"
         end 
 
     end 
