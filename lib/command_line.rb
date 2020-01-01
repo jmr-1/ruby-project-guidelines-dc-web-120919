@@ -47,8 +47,7 @@ def user_login
     # return user 
 end 
 
-def user_logout(user = nil) #changes login to nil and purges logged user object 
+def user_logout(user = nil) # purges logged user object 
 
-    user = nil 
-    
+    return user = nil 
 end 

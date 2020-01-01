@@ -29,6 +29,7 @@ def run
         input = get_input 
         #put user_login here?
         login = nil 
+        user = nil 
 
         case input 
             when 'exit'
@@ -38,6 +39,8 @@ def run
                 help 
             when 'login'
                 user_login 
+                #user = user_login (using return of user_login's user object) 
+                #then can pass this object to other methods 
                 #login = 1  formerly here but that presents a problem of being logged in even if user typed exit out of login loop
                 #need to make helper method to see if there's a user object present
                 #then set login = helper_method which returns either nil or 1
