@@ -1,57 +1,53 @@
 require_relative '../config/environment'
 
 
-def help(login=nil)
+def help(user)
 
     #shows list of commands
     puts "exit : Exits the program"
     puts "help : Gets this list of options"
     puts "login : Logs in or change user to compare games"
     puts "logout : Logs out of user"
-    puts "most_owned : Finds the most owned games "
+    puts "most_owned : Finds the most owned games"
+    puts "user: Shows currently logged in user"
 
-    if login!= nil 
+    if user!= nil 
 
         #puts following commands as well
-
+        puts "****"
+        puts "additional logged in features below:"
     end 
     
 end 
 
 def run 
+
     greeting 
-    #user_login 
-    help 
-    puts "Please enter a command: "
+    user = nil 
+    help(user)
+    
 
     loop do 
-
+        puts "Please enter a command: "
         input = get_input 
-        #put user_login here?
-        login = nil 
-        user = nil 
 
         case input 
             when 'exit'
                 exit_program
                 break 
             when 'help'
-                help 
+                help(user)
             when 'login'
-                user_login 
-                #user = user_login (using return of user_login's user object) 
-                #then can pass this object to other methods 
-                #login = 1  formerly here but that presents a problem of being logged in even if user typed exit out of login loop
-                #need to make helper method to see if there's a user object present
-                #then set login = helper_method which returns either nil or 1
+                user = user_login(user)
+            when 'user'
+                user_output(user) 
             when 'logout'
-                user_logout
-                login = nil 
+                user = user_logout
             when 'most_owned'
                 Collection.most_owned_game_printer
             else 
                 invalid_command 
-                help 
+                help(user)
         end 
     end 
 end 
