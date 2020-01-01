@@ -14,7 +14,7 @@ end
 
 def invalid_command 
 
-    puts "Invalid input. Please try again. \n"
+    puts "Invalid input. Please try again. \n\n"
 end 
 
 def exit_program
@@ -32,9 +32,9 @@ end
 
 def user_login_options 
 
-    puts "You are under user login. Options are below: \n
-    exit: exit from login procedure \n
-    list: lists all existing users\n
+    puts "You are under user login. Options are below:
+    exit: exit from login procedure
+    list: lists all existing users
     help: displays this list of options"
 end 
 
