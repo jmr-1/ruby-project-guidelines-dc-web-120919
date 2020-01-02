@@ -22,6 +22,8 @@ def help(user)
         puts "display_games: Displays user's owned games"
         puts "duplicate : Finds and displays duplicate games"
         puts "collection_stats : Displays user's collection stats"
+        puts "add_favorite : Allows user to choose favorite games"
+        puts "show_favorite : Allows user to show their favorite games from games they own"
     end 
     
 end 
@@ -85,6 +87,12 @@ def run
                     user.add_favorite
                 else 
                     invalid_command
+                end 
+            when 'show_favorite'
+                if user != nil
+                    user.show_favorite
+                else
+                    invalid_command 
                 end 
             else 
                 invalid_command 

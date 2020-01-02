@@ -95,32 +95,44 @@ class User < ActiveRecord::Base
     end 
 
     def choose_games 
-
+        #asks user input and inserts them in an array 
         puts "Choose a game: "
         chosen_games = []
         loop do 
             input = get_input 
-            game = Game.all.where('lower(name) = ?', input)
+            #lower(name) like ?
+            game = Game.all.where("lower(name) like ?", "%#{input}%")
             if game != nil 
             chosen_games << game 
             end 
-        break if get_input == 'stop' || get_input == ''
+        break if input == 'stop' || input == ''
         end 
+        chosen_games = chosen_games.flatten 
         return chosen_games 
     end 
 
-
-    #bug: chosen_games is embedding arrays within arrays, check line 120 with game[0] and 
-    #line 123 requires fave_game[0].favorite 
     def add_favorite 
         #user can add a game to favorites list 
         puts "Add your favorites (type 'stop' or press enter without text when finished): "
         chosen_games = self.choose_games 
         #checks game against collection and sets favorite to true 
         chosen_games.each do |game|
-            binding.pry 
-            fave_game = Collection.all.where(user_id: self.id, game_id: game[0].id)
-            fave_game.favorite = true 
+            fave_game_array = Collection.all.where(user_id: self.id, game_id: game.id)
+            fave_game_array.each do |game|
+                game.favorite = true 
+                game.save 
+            end 
+        end 
+    end 
+
+    def show_favorite
+        #show a user's favorite games 
+        favorite_array = Collection.all.select{|collection| collection.user == self && collection.favorite == true} 
+        if favorite_array == []
+            puts "This user has no favorite games!"
+        else 
+            puts "This user's favorite games:"
+            favorite_array.each {|collection| puts collection.game.name }
         end 
     end 
 end 
