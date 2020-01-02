@@ -94,5 +94,33 @@ class User < ActiveRecord::Base
         print_standard_deviation_collection
     end 
 
+    def choose_games 
 
+        puts "Choose a game: "
+        chosen_games = []
+        loop do 
+            input = get_input 
+            game = Game.all.where('lower(name) = ?', input)
+            if game != nil 
+            chosen_games << game 
+            end 
+        break if get_input == 'stop' || get_input == ''
+        end 
+        return chosen_games 
+    end 
+
+
+    #bug: chosen_games is embedding arrays within arrays, check line 120 with game[0] and 
+    #line 123 requires fave_game[0].favorite 
+    def add_favorite 
+        #user can add a game to favorites list 
+        puts "Add your favorites (type 'stop' or press enter without text when finished): "
+        chosen_games = self.choose_games 
+        #checks game against collection and sets favorite to true 
+        chosen_games.each do |game|
+            binding.pry 
+            fave_game = Collection.all.where(user_id: self.id, game_id: game[0].id)
+            fave_game.favorite = true 
+        end 
+    end 
 end 

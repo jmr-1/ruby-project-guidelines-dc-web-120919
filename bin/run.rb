@@ -74,11 +74,17 @@ def run
                 else
                     invalid_command
                 end 
-            when 'display_games'
+            when 'display_games' 
                 if user != nil
                     user.display_user_games
                 else 
-                    invalid command 
+                    invalid_command 
+                end 
+            when 'add_favorite' 
+                if user != nil
+                    user.add_favorite
+                else 
+                    invalid_command
                 end 
             else 
                 invalid_command 
