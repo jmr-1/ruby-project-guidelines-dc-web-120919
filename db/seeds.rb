@@ -64,6 +64,7 @@ def get_game_info(game_hash)
 end 
 
 #seed starts below:
+puts "Seeding games..."
 get_game_info(search_by_title('Neuland'))
 get_game_info(search_by_title('Keyflower'))
 get_game_info(search_by_title('Agricola'))
@@ -78,7 +79,7 @@ get_game_info(search_by_title('Rails'))
 get_game_info(search_by_title('Civilization'))
 
 #User seed starts 
-
+puts "Seeding users..."
 User.create(first_name: "John-Louis", last_name: "Rumingan")
 User.create(first_name: "Samantha", last_name: "Smith")
 User.create(first_name: "Sean", last_name: "Beach")
@@ -98,19 +99,30 @@ User.create(first_name: "JC", last_name: "Chang")
 def collection_maker(user)
 
     #randomly add 100 games to each user's collection 
+    #added random favorites
+    #limit random favorites to 20 during seed 
+    favorite_counter = 0 
     100.times do
         
         #Collection.create(user_id: , game_id: )
         #Collection.create(user, Game.all[rand(Game.all.length)])
         game = Game.all[rand(Game.all.length)]
-
-        Collection.create(user_id: user.id, game_id: game.id)
+        
+        if favorite_counter <10
+            favorite_boolean = [true, false].sample
+            if favorite_boolean == true 
+                favorite_counter += 1 
+            end 
+        else 
+            favorite_boolean = false 
+        end 
+        Collection.create(user_id: user.id, game_id: game.id, favorite: favorite_boolean)
     end 
 
 end 
 
 def create_user_collection 
-
+    #create a collection for each user, outputs reader 
     User.all.each do |user|
         puts "creating collection for #{user.first_name} #{user.last_name}"
         collection_maker(user)
