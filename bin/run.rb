@@ -31,6 +31,8 @@ def run
     help(user)
     
     loop do 
+        
+        puts "You are in the main menu."
         puts "Please enter a command: "
         input = get_input 
 
