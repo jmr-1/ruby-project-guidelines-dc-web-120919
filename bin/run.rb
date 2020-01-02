@@ -17,7 +17,9 @@ def help(user)
     puts "logout : Logs out of user"
     if user!= nil 
         #puts following commands if user is logged in 
+        puts "*****"
         puts "additional logged in features below:"
+        puts "display_games: Displays user's owned games"
         puts "duplicate : Finds and displays duplicate games"
         puts "collection_stats : Displays user's collection stats"
     end 
@@ -71,6 +73,12 @@ def run
                     user.print_collection_stats
                 else
                     invalid_command
+                end 
+            when 'display_games'
+                if user != nil
+                    user.display_user_games
+                else 
+                    invalid command 
                 end 
             else 
                 invalid_command 

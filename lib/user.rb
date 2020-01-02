@@ -3,6 +3,14 @@ class User < ActiveRecord::Base
     has_many :collections
     has_many :games, through: :collections
 
+    def display_user_games 
+
+        self.games.each do |game|
+            puts "#{game.name}, "
+        end 
+        STDOUT.flush 
+    end 
+
     def num_each_game 
         #lists the number of copies user has 
         num_game = Hash.new(0)
@@ -85,4 +93,6 @@ class User < ActiveRecord::Base
         print_collection_average
         print_standard_deviation_collection
     end 
+
+
 end 
