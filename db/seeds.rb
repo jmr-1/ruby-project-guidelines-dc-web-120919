@@ -64,22 +64,17 @@ def get_game_info(game_hash)
 end 
 
 #seed starts below:
-
-# get_game_info(search_by_title('Catan'))
 get_game_info(search_by_title('Neuland'))
 get_game_info(search_by_title('Keyflower'))
 get_game_info(search_by_title('Agricola'))
 get_game_info(search_by_title('Dominion'))
-# get_game_info(search_by_title('Battle'))
-# get_game_info(search_by_title('Railroad'))
-# get_game_info(search_by_title('Bus'))
-# get_game_info(search_by_title('Campaign'))
-# get_game_info(search_by_title('Combat'))
+get_game_info(search_by_title('Railroad'))
+get_game_info(search_by_title('Maskmen'))
 get_game_info(search_by_title('Azul'))
 get_game_info(search_by_title('1830'))
 get_game_info(search_by_title('1817'))
-# get_game_info(search_by_title('Magic'))
-# get_game_info(search_by_title('Rails'))
+get_game_info(search_by_title('Automobile'))
+get_game_info(search_by_title('Rails'))
 get_game_info(search_by_title('Civilization'))
 
 #User seed starts 
@@ -92,6 +87,11 @@ User.create(first_name: "Mansour", last_name: "Cheyo")
 User.create(first_name: "Anna", last_name: "Dybas")
 User.create(first_name: "Marija", last_name: "Stojanovic")
 User.create(first_name: "Amia", last_name: "Defreitas")
+User.create(first_name: "Dean", last_name: "Hildebrand")
+User.create(first_name: "Jennifer", last_name: "Gomez")
+User.create(first_name: "Shannon", last_name: "Nabors")
+User.create(first_name: "Paul", last_name: "Nicholsen")
+User.create(first_name: "JC", last_name: "Chang")
 
 #collection seed here 
 
