@@ -40,7 +40,49 @@ class User < ActiveRecord::Base
     end 
 
     def print_collection_worth
-
+        #prints collection_worth 
         puts "Your collection is worth: $#{self.collection_worth}"
+    end 
+
+
+    def collection_average
+        #finds logged in user's collection mean 
+        return average_worth = self.collection_worth / self.games.count 
+    end 
+
+    def print_collection_average
+        #prints collection_average
+        puts "Your collection's average is: $#{self.collection_average}"
+    end 
+
+    def collection_variance 
+        
+        sum = 0
+        m = self.collection_average
+        self.games.each do |game|
+
+            sum += (game.price)**2
+        end 
+
+        total_variance = (sum/self.games.count) - m**2
+
+        return total_variance
+    end
+    
+    def standard_deviation_collection
+
+        return Math.sqrt(self.collection_variance)
+    end 
+
+    def print_standard_deviation_collection 
+
+        puts "Your collection's pricing standard deviation is: $#{self.standard_deviation_collection}"
+    end 
+
+    def print_collection_stats 
+
+        print_collection_worth
+        print_collection_average
+        print_standard_deviation_collection
     end 
 end 

@@ -19,7 +19,7 @@ def help(user)
         #puts following commands if user is logged in 
         puts "additional logged in features below:"
         puts "duplicate : Finds and displays duplicate games"
-        puts "collection_worth : Finds the total value of this user's collection"
+        puts "collection_stats : Displays user's collection stats"
     end 
     
 end 
@@ -64,12 +64,12 @@ def run
                 else 
                     invalid_command 
                 end     
-            when 'collection_worth'
+            when 'collection_stats'
                 if user != nil
-                    user.print_collection_worth
+                    user.print_collection_stats
                 else
                     invalid_command
-                end  
+                end 
             else 
                 invalid_command 
                 help(user)
