@@ -15,13 +15,8 @@ puts "    ._____. ._____. ._____. ._____.
     .___|_|_| |___. .___|_|_| |___.
     | ._____| |_. | | ._____| |_. |
     | !_! | | !_! | | !_! | | !_! |
-    !_____! !_____! !_____! !_____!"
-    
-    # puts " BOARD GAMES \n
-    # BOARD GAMES \n
-    #     BOARD GAMES \n
-    #         BOARD GAMES \n
-    #             BOARD GAMES \n"
+    !_____! !_____! !_____! !_____!".light_cyan
+
 end 
 
 def get_input
@@ -31,19 +26,19 @@ end
 
 def invalid_command 
 
-    puts "Invalid input. Please try again. \n\n"
+    puts "Invalid input. Please try again. \n\n".red
 end 
 
 def exit_program
 
-    puts "Exiting program. Goodbye!"
+    puts "Exiting program. Goodbye!".magenta
 end 
 
 def user_output(user)
     if user == nil 
-        puts "No user currently"
+        puts "No user currently".light_red
     else
-        puts "Currently logged in as: #{user.first_name} #{user.last_name}"
+        puts "Currently logged in as: #{user.first_name} #{user.last_name}".green
     end 
 end 
 
@@ -52,7 +47,7 @@ def user_login_options
     puts "You are under user login. Options are below:
     exit: exit from login procedure
     list: lists all existing users
-    help: displays this list of options"
+    help: displays this list of options".light_green
 end 
 
 
@@ -90,8 +85,8 @@ def user_login(user)
         case input 
             when 'exit'
 
-                puts "Exiting. No user changed."
-                puts "You are now back to the list of main options"
+                puts "Exiting. No user changed.".light_red
+                puts "You are now back to the list of main options".yellow
                 break #breaks loop, if there was a previous user, does not purge them and returns same user 
             when 'list'
                 puts "Current list of users:"
@@ -114,7 +109,7 @@ end
 
 def find_game 
     #finds a game from list of all games 
-    puts "Please enter the game name: "
+    puts "Please enter the game name: ".blue
     input = get_input 
     return Game.where('lower(name) = ?', input)
 end 
@@ -123,7 +118,7 @@ end
 def owners_of_game(game)
     #handles the process of find_game 
     if game.count == 0 
-        puts "Game not found"
+        puts "Game not found".red
     else 
         Game.print_game_owners(game) 
     end 
