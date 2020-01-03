@@ -110,7 +110,7 @@ def collection_maker(user)
         
         if favorite_counter <10
             favorite_boolean = [true, false].sample
-            if favorite_boolean == true 
+            if favorite_boolean 
                 favorite_counter += 1 
             end 
         else 

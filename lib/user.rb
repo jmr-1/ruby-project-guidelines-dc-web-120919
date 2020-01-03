@@ -127,12 +127,21 @@ class User < ActiveRecord::Base
 
     def show_favorite
         #show a user's favorite games 
-        favorite_array = Collection.all.select{|collection| collection.user == self && collection.favorite == true} 
+        favorite_array = self.favorites
         if favorite_array == []
             puts "This user has no favorite games!"
         else 
             puts "This user's favorite games:"
             favorite_array.each {|collection| puts collection.game.name }
-        end 
+        end
     end 
-end 
+
+    def favorites
+     self.collections.filter{|coll| coll.favorite}
+    end
+    
+    def find_same_favorite
+        
+
+    end
+end
