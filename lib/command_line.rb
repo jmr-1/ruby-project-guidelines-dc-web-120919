@@ -16,12 +16,6 @@ puts "    ._____. ._____. ._____. ._____.
     | ._____| |_. | | ._____| |_. |
     | !_! | | !_! | | !_! | | !_! |
     !_____! !_____! !_____! !_____!"
-    
-    # puts " BOARD GAMES \n
-    # BOARD GAMES \n
-    #     BOARD GAMES \n
-    #         BOARD GAMES \n
-    #             BOARD GAMES \n"
 end 
 
 def get_input
