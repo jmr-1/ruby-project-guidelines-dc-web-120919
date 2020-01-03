@@ -85,19 +85,6 @@ def user_login(user)
             else 
 
                 return check_user(split, input)
-                # user_firstname = User.where('lower(first_name) = ?', split.first)
-                # user_lastname = User.where('lower(last_name) = ?', split.last)
-                
-                # if user_firstname.count == 0 || user_lastname.count == 0 
-                #     puts "User not found"
-                # elsif (user_firstname[0].id == user_lastname[0].id)
-                #     #have to get the user id because different objects are summoned for each db search
-                #     user = user_firstname[0]
-                #     puts "User found: #{user}. Name: #{user.first_name} #{user.last_name}"
-                #     return user 
-                # else 
-                #     puts "User not found"
-                # end 
         end 
     end 
     return user 
