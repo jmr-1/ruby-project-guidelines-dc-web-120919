@@ -132,7 +132,7 @@ class User < ActiveRecord::Base
             puts "This user has no favorite games!"
         else 
             puts "This user's favorite games:"
-            favorite_array.each {|collection| puts collection.game.name }
+            favorite_array.each_with_index {|collection, i| puts "#{i +1}.#{collection.game.name}" }
         end
     end 
 
@@ -140,8 +140,16 @@ class User < ActiveRecord::Base
      self.collections.filter{|coll| coll.favorite}
     end
     
-    def find_same_favorite
+    def compare_favorites
+       self.show_favorite 
+       puts "Choose a favorite game from list using a number"
+       input = get_input.to_i 
+       chosen_fav_game = self.favorites[input - 1].game
+       puts chosen_fav_game.name
+      fav_users =  Collection.where(game_id: chosen_fav_game.id, favorite: true)
+      puts "Users who enjoy this game!"
+      fav_users.each {|collection| puts "#{collection.user.first_name} #{collection.user.last_name}"}
         
-
     end
+
 end

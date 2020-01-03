@@ -5,7 +5,7 @@ def help(user)
 
     #shows list of commands
     puts "You are in the main menu. Options are below:"
-    puts "exit : Exits the program"
+    puts "leave : Exits the program"
     puts "help : Gets this list of options"
     puts "most_owned : Finds the most owned games"
     puts "top_games : Displays the top x games"
@@ -24,6 +24,7 @@ def help(user)
         puts "collection_stats : Displays user's collection stats"
         puts "add_favorite : Allows user to choose favorite games"
         puts "show_favorite : Allows user to show their favorite games from games they own"
+        puts "compare_favorites : Allows user to search for a specific favorite game and lists other users with same favorite game"
     end 
     
 end 
@@ -42,7 +43,7 @@ def run
 
         #any features that require logged in searching by user means it might need another loop/case 
         case input 
-            when 'exit'
+            when 'leave'
                 exit_program
                 break 
             when 'help'
@@ -94,6 +95,12 @@ def run
                 else
                     invalid_command 
                 end 
+            when 'compare_favorites'
+                if user != nil
+                    user.compare_favorites
+                else
+                    invalid_command
+                end
             else 
                 invalid_command 
                 help(user)
