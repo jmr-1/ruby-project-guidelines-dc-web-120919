@@ -31,7 +31,7 @@ end
 
 def run 
 
-    greeting 
+    greeting
     user = nil 
     help(user)
     
